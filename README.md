@@ -13,7 +13,7 @@ The game application, make with flutter of the a famous game PacMan.
 Clone o projeto
 
 ```bash
-  git clone https://github.com/ayusuke7/pacman_flutter
+  git clone https://github.com/ayusuke7/FlutterPacman
 ```
 
 Entre no diretório do projeto
