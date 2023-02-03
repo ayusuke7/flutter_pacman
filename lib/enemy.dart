@@ -2,11 +2,11 @@ import 'package:pacman_flutter/direction.dart';
 
 class Enemy {
   
-  MoveDirection direction;
+  MoveDir direction;
   int position;
 
   Enemy({ 
-    this.direction = MoveDirection.RIGTH, 
+    this.direction = MoveDir.RIGTH, 
     required this.position
   });
 

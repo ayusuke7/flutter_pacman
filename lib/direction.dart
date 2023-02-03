@@ -1,1 +1,1 @@
-enum MoveDirection { UP, DOWN, LEFT, RIGTH }
+enum MoveDir { UP, DOWN, LEFT, RIGTH }

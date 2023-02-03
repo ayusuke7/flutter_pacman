@@ -3,22 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:pacman_flutter/direction.dart';
 
 class Player extends StatelessWidget {
-  final MoveDirection direction;
+  final MoveDir direction;
 
   const Player({
     super.key,
-    this.direction = MoveDirection.RIGTH
+    this.direction = MoveDir.RIGTH
   });
 
   @override
   Widget build(BuildContext context) {
     double angle = 0.0;
 
-    if(direction == MoveDirection.LEFT){
+    if(direction == MoveDir.LEFT){
       angle = pi;
-    } else if(direction == MoveDirection.DOWN){
+    } else if(direction == MoveDir.DOWN){
       angle = pi / 2;
-    } else if(direction == MoveDirection.UP){
+    } else if(direction == MoveDir.UP){
       angle = 3 * pi / 2;
     }
 
