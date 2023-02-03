@@ -1,8 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-
-enum MoveDirection { UP, DOWN, LEFT, RIGTH }
-
+import 'package:pacman_flutter/direction.dart';
 
 class Player extends StatelessWidget {
   final MoveDirection direction;

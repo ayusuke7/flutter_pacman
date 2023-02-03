@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
+import 'package:pacman_flutter/direction.dart';
 
-class Enemy extends StatelessWidget {
+class Enemy {
   
-  const Enemy({
-    super.key,
+  MoveDirection direction;
+  int position;
+
+  Enemy({ 
+    this.direction = MoveDirection.RIGTH, 
+    required this.position
   });
 
-  @override
-  Widget build(BuildContext context) {
-    return Image.asset('assets/imgs/red-enemy.png');
-  }
 }
