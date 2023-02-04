@@ -1,6 +1,8 @@
 
 import 'dart:async';
-import 'dart:math';
+import 'dart:io';
+import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:pacman_flutter/direction.dart';
 import 'package:pacman_flutter/enemy.dart';
@@ -23,7 +25,6 @@ class _BoardGameState extends State<BoardGame> {
   static Level level = Levels.one();
 
   List<int> foods = level.paths;
-
   List<Enemy> enemys = [
     Enemy(position: 27, direction: MoveDir.DOWN),
     Enemy(position: 93, direction: MoveDir.LEFT),
@@ -61,6 +62,8 @@ class _BoardGameState extends State<BoardGame> {
       if(foods.isEmpty) {
         setState(() {
           level = Levels.two();
+          foods = level.paths;
+          playerPosition =  133;
         });
       }
     }
@@ -163,6 +166,14 @@ class _BoardGameState extends State<BoardGame> {
 
   @override
   Widget build(BuildContext context) {
+    BoxConstraints? constraints;
+
+    if(kIsWeb || !Platform.isAndroid && !Platform.isIOS) {
+      constraints = const BoxConstraints(
+        maxWidth: 500
+      );
+    }
+
     return Scaffold(
       backgroundColor: Colors.black,
       appBar: AppBar(
@@ -183,46 +194,57 @@ class _BoardGameState extends State<BoardGame> {
           ],
         ),
       ),
-      body: Stack(
-        children: [
-          _buildBoardGame(),
-          
-          if(!started) _buildOverlay(),
-        ],
+      body: Center(
+        child: Container(
+          constraints: constraints,
+          child: Stack(
+            children: [
+              _buildBoardGame(),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: _buildControls()
+              ),
+              if(!started) _buildOverlay(),
+            ],
+          ),
+        ),
       ),
-      bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(
-          vertical: 10.0
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            IconButton(
-              color: Colors.white,
-              onPressed: _moveLeft, 
-              icon: const Icon(Icons.arrow_circle_left),
-              iconSize: 40,
-            ),
-            IconButton(
-              color: Colors.white,
-              onPressed: _moveRight, 
-              icon: const Icon(Icons.arrow_circle_right),
-              iconSize: 40,
-            ),
-            IconButton(
-              color: Colors.white,
-              onPressed: _moveDown, 
-              icon: const Icon(Icons.arrow_circle_down),
-              iconSize: 40,
-            ),
-            IconButton(
-              color: Colors.white,
-              onPressed: _moveUp, 
-              icon: const Icon(Icons.arrow_circle_up),
-              iconSize: 40,
-            ),
-          ],
-        ),
+    );
+  }
+
+  Widget _buildControls() {
+    return Container(
+      padding: const EdgeInsets.symmetric(
+        vertical: 10.0
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          IconButton(
+            color: Colors.white,
+            onPressed: _moveLeft, 
+            icon: const Icon(Icons.arrow_circle_left),
+            iconSize: 40,
+          ),
+          IconButton(
+            color: Colors.white,
+            onPressed: _moveRight, 
+            icon: const Icon(Icons.arrow_circle_right),
+            iconSize: 40,
+          ),
+          IconButton(
+            color: Colors.white,
+            onPressed: _moveDown, 
+            icon: const Icon(Icons.arrow_circle_down),
+            iconSize: 40,
+          ),
+          IconButton(
+            color: Colors.white,
+            onPressed: _moveUp, 
+            icon: const Icon(Icons.arrow_circle_up),
+            iconSize: 40,
+          ),
+        ],
       ),
     );
   }
