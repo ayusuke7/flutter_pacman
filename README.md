@@ -1,7 +1,3 @@
-## Etiquetas
-
-Adicione etiquetas de algum lugar, como: [shields.io](https://shields.io/)
-
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 
 # Flutter Pacman
@@ -17,7 +13,7 @@ The game application, make with flutter of the a famous game PacMan.
 Clone o projeto
 
 ```bash
-  git clone https://github.com/ayusuke7/pacman_flutter
+  git clone https://github.com/ayusuke7/FlutterPacman
 ```
 
 Entre no diretório do projeto
